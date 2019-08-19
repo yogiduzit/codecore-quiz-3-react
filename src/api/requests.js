@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:3000"
 
-export const Post = {
+export const Posts = {
   all() {
     return fetch(`${BASE_URL}/posts`)
     .then(res => {

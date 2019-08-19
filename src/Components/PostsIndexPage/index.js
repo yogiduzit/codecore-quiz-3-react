@@ -1,5 +1,6 @@
 import React from 'react';
-import {Post} from '../../api/requests';
+import { Posts } from '../../api/requests';
+import Post from '../Post';
 
 export default class PostsIndexPage extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class PostsIndexPage extends React.Component {
   }
 
   componentDidMount() {
-    Post.all().then(data => {
+    Posts.all().then(data => {
       this.setState({
         posts: data.posts
       })
@@ -26,10 +27,7 @@ export default class PostsIndexPage extends React.Component {
     return(
       <div className="posts-container">
         { this.state.posts.map((post, index) => {
-          return(<div className="post" key={index}>
-            <h1 className="post-title">{post.title}</h1>
-            <p className="post-body">{post.body}</p>
-          </div>)
+          return <Post post={post} key={index}></Post>
         })}
       </div>
     )
