@@ -16,6 +16,19 @@ export const Posts = {
     .then(res => {
       return res.json();
     });
+  },
+  create(params) {
+    return fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify(params)
+    })
+    .then(res => {
+      return res.json();
+    })
   }
 }
 
