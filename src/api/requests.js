@@ -29,6 +29,12 @@ export const Posts = {
     .then(res => {
       return res.json();
     })
+  },
+  destroy(id) {
+    return fetch(`${BASE_URL}/posts/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    }).then(res => res.json())
   }
 }
 

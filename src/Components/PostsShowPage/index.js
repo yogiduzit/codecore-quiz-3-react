@@ -9,15 +9,24 @@ export default class PostsShowPage extends React.Component {
     this.state = {
       post: null
     }
+
+    this.deletePost = this.deletePost.bind(this);
   }
 
   componentDidMount() {
     Posts.find(this.props.match.params.id)
     .then(data => {
       this.setState({
-        post: data.post
+        post: data
       })
     })
+  }
+
+  deletePost() {
+    Posts.destroy(this.props.match.params.id)
+    .then(data => {
+      this.props.history.push('/posts')
+    });
   }
 
   render() {
@@ -29,7 +38,7 @@ export default class PostsShowPage extends React.Component {
     
     return(
       <div className="post-container">
-        <Post post={this.state.post}></Post>
+        <Post post={this.state.post} onDelete={this.deletePost}></Post>
       </div>
 
     )
