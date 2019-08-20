@@ -30,6 +30,19 @@ export const Posts = {
       return res.json();
     })
   },
+  update(params, id) {
+    return fetch(`${BASE_URL}/posts/${id}`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify(params)
+    })
+    .then(res => {
+      return res.json();
+    })
+  },
   destroy(id) {
     return fetch(`${BASE_URL}/posts/${id}`, {
       method: "DELETE",
