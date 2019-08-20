@@ -40,6 +40,8 @@ export default class NewPostPage extends React.Component {
           ...this.state,
           errors: data.errors
         })
+      } else {
+        this.props.history.push(`/posts/${data.post.id}`);
       }
     })
   }
