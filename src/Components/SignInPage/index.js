@@ -1,4 +1,5 @@
 import React from 'react';
+import {Session} from '../../api/requests';
 
 export default class SignInPage extends React.Component {
   constructor(props) {
@@ -23,8 +24,12 @@ export default class SignInPage extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    this.props.signIn(this.state);
+    Session.create(this.state).then(data => {
+      this.props.onSignIn();
+      localStorage.setItem("currentUser", data.id)
+    });
+
+    this.props.history.push('/');
   }
 
   render() {
