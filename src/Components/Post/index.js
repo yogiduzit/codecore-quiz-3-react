@@ -9,6 +9,10 @@ export default function Post(props) {
       <div className="post-body">
         <p className="body">{props.post.body}</p>
       </div>
+      { props.post.authorized ? <div className="buttons">
+        <button className="update" href={`/posts/${props.post.id}/edit`}>Update</button>
+        <button className="delete" onClick={props.onDelete}>Delete</button>
+      </div>: null}
     </div>
   )
 }
