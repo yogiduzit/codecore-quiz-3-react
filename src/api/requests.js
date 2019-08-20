@@ -32,5 +32,23 @@ export const Session = {
     .then(res => {
       return res.json();
     })
+  },
+  destroy() {
+    return fetch(`${BASE_URL}/sessions`, {
+      method: "DELETE",
+      credentials: "include"
+    })
+    .then(res => {
+      return res.json();
+    })
+  }
+}
+
+export const User = {
+  current() {
+    return fetch('http://localhost:3000/current_user', {
+      credentials: "include"
+    })
+    .then(res => res.json())
   }
 }
